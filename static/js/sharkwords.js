@@ -29,7 +29,6 @@ const createDivsForChars = (word) => {
 // The buttons should be appended to the section with id="letter-buttons"
 const generateLetterButtons = () => {
   for (const letter of ALPHABET) {
-    console.log(letter)
     document.querySelector('#letter-buttons').insertAdjacentHTML('beforeend', `<button>${letter}</button>`);
   }
 };
@@ -39,7 +38,9 @@ const generateLetterButtons = () => {
 // `buttonEl` is an `HTMLElement` object.
 //
 const disableLetterButton = (buttonEl) => {
-  buttonEl.setAttribute('disabled', 'true')
+  buttonEl.disabled = true
+  // document.querySelector(buttonEl).disabled = true;
+  // buttonEl.setAttribute('disabled', 'true')
   // document.querySelector('#letter-buttons').style.display = '';
 };
 
@@ -66,6 +67,7 @@ const isLetterInWord = (letter) => {
 
   // call the function that makes a button for each letter in the alphabet
   generateLetterButtons()
+
 
   // in the next lab, you will be adding functionality to handle when
   // someone clicks on a letter
