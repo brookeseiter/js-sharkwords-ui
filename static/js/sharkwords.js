@@ -21,7 +21,7 @@ const numWrong = 0;
 // The divs should be appended to the section with id="word-container".
 const createDivsForChars = (word) => {
   for (const letter of word) {
-    document.querySelector('#word-container').insertAdjacentHTML('beforeend', '<div class="letter-box ${letter}"></div>');
+    document.querySelector('#word-container').insertAdjacentHTML('beforeend', `<div class="letter-box ${letter}"></div>`);
   }
 };
 
@@ -38,10 +38,7 @@ const generateLetterButtons = () => {
 // `buttonEl` is an `HTMLElement` object.
 //
 const disableLetterButton = (buttonEl) => {
-  buttonEl.disabled = true
-  // document.querySelector(buttonEl).disabled = true;
-  // buttonEl.setAttribute('disabled', 'true')
-  // document.querySelector('#letter-buttons').style.display = '';
+  buttonEl.disabled = true;
 };
 
 // This is a helper function we will use in the future
@@ -49,8 +46,18 @@ const disableLetterButton = (buttonEl) => {
 // For now, you should test it out to make sure it works
 
 const isLetterInWord = (letter) => {
-  // Replace this with your code
+  document.querySelector(`div.${letter}`) !== null;
 };
+
+
+const handleCorrectGuess = (letter, word) => {
+  const div = document.querySelector(`div.${letter}`)
+  div.innerHTML = letter
+  console.log(letter)
+};
+
+const handleWrongGuess = (letter)
+  const div = document.querySelector(`div.${letter}`)
 
 // This is like if __name__ == '__main__' in Python
 // It will be called when the file is run (because
@@ -62,13 +69,34 @@ const isLetterInWord = (letter) => {
   // and can tell if things look correct for this word
   const word = 'hello';
 
-  // call the function that makes an empty line for each letter in the word
-  createDivsForChars(word)
+  createDivsForChars(word);
+  generateLetterButtons();
 
-  // call the function that makes a button for each letter in the alphabet
-  generateLetterButtons()
+  for (const button of document.querySelectorAll('button')) {
+    button.addEventListener('click', (evt) => {
+      const letter = button.innerHTML 
+      
+
+      
+      
+      
+    })
 
 
-  // in the next lab, you will be adding functionality to handle when
-  // someone clicks on a letter
+    // add an event handler to handle clicking on a letter button
+    button.addEventListener('click', () => {
+      const letter = button.innerHTML;  // can also use evt.target instead of button
+    
+      // you should disable the button so the letter can't be clicked again
+    
+      // you should then check if the currently clicked letter is in the word
+    
+      // if it is, call `handleCorrectGuess`
+    
+      // if it is not, call `handleWrongGuess`
+    });
+  }
+
+  // add an event handler to handle clicking on the Play Again button
+  // YOUR CODE HERE
 })();
